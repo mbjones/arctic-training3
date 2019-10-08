@@ -5,7 +5,8 @@
 - Matthew Jones
 - Jeanette Clark
 
-Testing repository for the Arctic Data Training - Just a small town girl.
+
+Testing repository for the Arctic Data Training for good.
 
 Add some more descripotion.
 
