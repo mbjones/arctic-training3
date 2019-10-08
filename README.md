@@ -5,7 +5,7 @@
 - Matthew Jones
 - Jeanette Clark
 
-Testing repository for the Arctic Data Training.
+Testing repository for the Arctic Data Training for good.
 
 Add some more descripotion.
 
