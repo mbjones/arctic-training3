@@ -1,0 +1,60 @@
+---
+title: "redundancy"
+author: "Matt Jones"
+date: "10/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+```
+
+```{r}
+#bit <- read.csv("https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3Aaa308395-54f6-412c-9ca3-0112a1d67938",
+#                stringsAsFactors = FALSE)
+bit <- read.csv("http://www.cfec.state.ak.us/public/bit.csv", stringsAsFactors = FALSE)
+head(bit)
+```
+
+# Redundant code in R
+
+```{r eval=FALSE}
+# remove commas
+newbit$Resident.Interim.Permits.Issued <- gsub(",", "", bit$Resident.Interim.Permits.Issued)
+newbit$Resident.Interim.Permits.Issued <- gsub(",", "", bit$Resident.Interim.Permits.Issued)
+newbit$Nonresident.Interim.Permits.Issued <- gsub(",", "", bit$Nonresident.Interim.Permits.Issued)
+newbit$Total.Interim.Permits.Issued <- gsub(",", "", bit$Total.Interim.Permits.Issued)
+newbit$Resident.Permits.Issued.Renewed <- gsub(",", "", bit$Resident.Permits.Issued.Renewed)
+newbit$Nonresident.Permits.Issued.Renewed <- gsub(",", "", bit$Nonresident.Permits.Issued.Renewed)
+newbit$Total.Permits.Issued.Renewed <- gsub(",", "", bit$Total.Permits.Issued.Renewed)
+newbit$Resident.Total.Permits.Fished <- gsub(",", "", bit$Resident.Total.Permits.Fished)
+newbit$Total.Permits.Fished <- gsub(",", "", bit$Total.Permits.Fished)
+newbit$Resident.Total.Pounds <- gsub(",", "", bit$Resident.Total.Pounds)
+newbit$Nonresident.Total.Pounds <- gsub(",", "", bit$Nonresident.Total.Pounds)
+newbit$Total.Pounds <- gsub(",", "", bit$Total.Pounds)
+newbit$Resident.Average.Pounds <- gsub(",", "", bit$Resident.Average.Pounds)
+newbit$Nonresident.Average.Pounds <- gsub(",", "", bit$Nonresident.Average.Pounds)
+newbit$Average.Pounds <- gsub(",", "", bit$Average.Pounds)
+newbit$Resident.Total.Earnings <- gsub(",", "", bit$Resident.Total.Earnings)
+newbit$Nonresident.Total.Earnings <- gsub(",", "", bit$Nonresident.Total.Earnings)
+newbit$Total.Earnings <- gsub(",", "", bit$Total.Earnings)
+newbit$Resident.Average.Earnings <- gsub(",", "", bit$Resident.Average.Earnings)
+newbit$Nonresident.Average.Earnings <- gsub(",", "", bit$Nonresident.Average.Earnings)
+newbit$Average.Earnings <- gsub(",", "", bit$Average.Earnings)
+```
+
+# An alternative
+
+```{r}
+bit %>% 
+    as_tibble() %>% 
+    mutate_if(is.character, str_replace_all, pattern = ",", replacement = "")
+```
+
+

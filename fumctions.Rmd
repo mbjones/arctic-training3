@@ -1,0 +1,48 @@
+---
+title: "functions"
+author: "Matt Jones"
+date: "10/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(roxygen2)
+source("conversions.R")
+```
+
+# Create some data for examples
+
+```{r}
+
+airtemps <- c(212, 30.3, 75, 32)
+airtemp1 <- (airtemps[1]-32)*5/9
+airtemp2 <- (airtemps[2]-32)*5/9
+airtemp3 <- (airtemps[3]-32)*5/9
+airtemp4 <- (airtemps[4]-32)*5/9
+```
+
+
+# Write a function for F to C conversion
+
+```{r}
+
+celsius1 <- fahr_to_celsius(airtemps[1])
+celsius1 == airtemp1
+
+celsius <- fahr_to_celsius(airtemps)
+celsius
+fahr_to_celsius("5")
+```
+
+# Write the inverse for C to F
+
+
+```{r}
+fahr <- celsius_to_fahr(celsius)
+fahr == airtemps
+```
+
